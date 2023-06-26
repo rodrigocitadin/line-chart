@@ -7,7 +7,7 @@ if (canvas.getContext) {
 
   for (let color of colors) {
     for (let i = 0; i < 12; i++) {
-      arrayMonths.push(Math.floor(Math.random() * 295));
+      arrayMonths.push(Math.floor(Math.random() * 595));
     }
 
     drawLine(ctx, arrayMonths, color);
@@ -25,12 +25,12 @@ function drawLine(ctx, arrayMonths, color) {
 
   ctx.strokeStyle = color
   ctx.beginPath();
-  ctx.moveTo(0, 300 - arrayMonths[0]);
+  ctx.moveTo(0, 600 - arrayMonths[0]);
 
   for (let month of arrayMonths) {
 
-    ctx.lineTo(x, 300 - month)
-    x += 60;
+    ctx.lineTo(x, 600 - month)
+    x += 100;
   }
 
   ctx.stroke()
