@@ -1,9 +1,18 @@
 const canvas = document.getElementById("line-chart");
+const colors = ['red', 'blue', 'green', 'purple'];
 
 if (canvas.getContext) {
   const ctx = canvas.getContext("2d");
+  let arrayMonths = [];
 
-  drawLine(ctx, [88, 42, 183, 234, 121, 74, 21, 199, 213, 112, 221, 40], 'red')
+  for (let color of colors) {
+    for (let i = 0; i < 12; i++) {
+      arrayMonths.push(Math.floor(Math.random() * 295));
+    }
+
+    drawLine(ctx, arrayMonths, color);
+    arrayMonths = [];
+  }
 }
 
 function drawLine(ctx, arrayMonths, color) {
