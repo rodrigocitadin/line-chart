@@ -1,26 +1,26 @@
-const canvas = document.getElementById("line-chart");
+const lineChart = document.getElementById("line-chart");
+const barChart = document.getElementById("bar-chart");
 const colors = ['red', 'blue', 'green', 'purple'];
 
-if (canvas.getContext) {
-  const ctx = canvas.getContext("2d");
-  let arrayMonths = [];
+if (lineChart.getContext) {
+  const ctx = lineChart.getContext("2d");
 
   for (let color of colors) {
-    for (let i = 0; i < 12; i++) {
-      arrayMonths.push(Math.floor(Math.random() * 595));
-    }
-
-    drawLine(ctx, arrayMonths, color);
-    arrayMonths = [];
+    drawLine(ctx, populateArray(), color);
   }
 }
 
+function populateArray(n = 12) {
+  let arrayMonths = [];
+
+  for (let i = 0; i < n; i++) {
+    arrayMonths.push(Math.floor(Math.random() * 595));
+  }
+
+  return arrayMonths;
+}
+
 function drawLine(ctx, arrayMonths, color) {
-  // array months example: [20, 40, 100, 20, 30, 40, 10, 80, 29, 15, 23, 45]
-  // 12 elements with a value
-  //
-  // color example:
-  // 'red', 'blue', 'green'...
   let x = 0;
 
   ctx.strokeStyle = color
