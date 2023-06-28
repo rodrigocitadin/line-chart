@@ -10,6 +10,14 @@ if (lineChart.getContext) {
   }
 }
 
+if (barChart.getContext) {
+  const ctx = barChart.getContext("2d");
+
+  for (let [index, color] of colors.entries()) {
+    drawBars(ctx, populateArray(), color, index);
+  }
+}
+
 function populateArray(n = 12) {
   let arrayMonths = [];
 
@@ -18,6 +26,17 @@ function populateArray(n = 12) {
   }
 
   return arrayMonths;
+}
+
+function drawBars(ctx, arrayMonths, color, index) {
+  index *= 10
+  let x = 20 + index;
+  ctx.fillStyle = color;
+
+  for (let month of arrayMonths) {
+    ctx.fillRect(x, 600 - month, 30, month)
+    x += 100;
+  }
 }
 
 function drawLine(ctx, arrayMonths, color) {
